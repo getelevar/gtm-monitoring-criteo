@@ -336,7 +336,9 @@ ___SANDBOXED_JS_FOR_WEB_TEMPLATE___
 
 const log = require("logToConsole");
 const createQueue = require("createQueue");
+const injectScript = require("injectScript");
 
+const CRITEO_URL = "https://dynamic.criteo.com/js/ld/ld.js";
 const TAG_INFO = "elevar_gtm_tag_info";
 const addTagInformation = createQueue(TAG_INFO);
 const pushToCriteo = createQueue('criteo_q');
@@ -362,6 +364,9 @@ const hasVariables = (keys) => {
   
   return true;
 };
+
+/* ============= */
+injectScript(CRITEO_URL + "?a=" + data.accountId);
 
 /* Common Events */
 if (hasVariables(['accountId'])) {
@@ -537,6 +542,32 @@ ___WEB_PERMISSIONS___
           }
         }
       ]
+    },
+    "isRequired": true
+  },
+  {
+    "instance": {
+      "key": {
+        "publicId": "inject_script",
+        "versionId": "1"
+      },
+      "param": [
+        {
+          "key": "urls",
+          "value": {
+            "type": 2,
+            "listItem": [
+              {
+                "type": 1,
+                "string": "https://dynamic.criteo.com/js/*"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "clientAnnotations": {
+      "isEditedByUser": true
     },
     "isRequired": true
   }
