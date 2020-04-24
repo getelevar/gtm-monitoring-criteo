@@ -1,5 +1,5 @@
 homepage: "https://www.getelevar.com"
 documentation: "https://github.com/getelevar/gtm-monitoring-criteo/blob/master/README.md"
 versions:
-  - sha:
+  - sha: 43f6da9ef180f8974b6fd34efb87f49c27dcffef
     changeNotes: Initial release.
